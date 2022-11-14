@@ -3,7 +3,11 @@
 
         <SearchApp/>
 
-        <div class="row d-flex justify-content-center">
+        <div class="loading-page" v-if="loading">
+            carica
+        </div>
+
+        <div class="row d-flex justify-content-center" v-if="!loading">
 
             <CardSection :character ="item" v-for="(item, index) in characters" :key="item.char_id"/>
 

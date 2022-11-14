@@ -20,18 +20,22 @@ import MainComponent from './components/MainComponent.vue';
       return {
         apiUrl : 'https://www.breakingbadapi.com/api/characters',
         characterList: [],
-
+        loading : false
       }
     },
 
     methods: {
       getCharacters(){
+        this.loading = true;
         axios.get(this.apiUrl).then(
           (res)=> {
             this.characterList = [...res.data];
-            console.log(this.characterList);
-
+            this.loading = false;
+            
+        }).catch((error)=> {
+          this.loading = false;
         })
+        
       }
     },
 

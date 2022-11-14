@@ -4,6 +4,7 @@
                     <img class="img-fluid" :src="character.img" :alt="character.name">
                 </div>
                 <h3>{{character.name}}</h3>
+                <p>{{character.category}}</p>
                 <p>{{character.status}}</p>
             </div>
 </template>
@@ -26,10 +27,9 @@
 
         .container-img{
             width: auto;
-            height: 70%;
+            height: 65%;
             margin: 10px;
         }
-       
 
         h3{
             color: $white-text;
@@ -39,8 +39,5 @@
             color: $description-card;
         }
     }
-
-  
-
 
 </style>
