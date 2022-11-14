@@ -31,9 +31,12 @@ import MainComponent from './components/MainComponent.vue';
           (res)=> {
             this.characterList = [...res.data];
             this.loading = false;
+            console.log('caricamento')
             
         }).catch((error)=> {
           this.loading = false;
+          console.log(error);
+
         })
         
       }
