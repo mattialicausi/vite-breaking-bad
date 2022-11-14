@@ -1,8 +1,14 @@
 <template>
     <main class="container">
+
         <SearchApp/>
 
-        <CardSection/>
+        <div class="row d-flex justify-content-center">
+
+            <CardSection :character ="item" v-for="(item, index) in characters" :key="item.char_id"/>
+
+        </div>
+        
     </main>
 </template>
 
@@ -15,7 +21,10 @@ import SearchApp from './main_section/SearchApp.vue';
     components: { 
         SearchApp, 
         CardSection 
-    }
+    },
+    props: [
+        "characters"
+    ]
 }
 </script>
 
@@ -26,6 +35,7 @@ import SearchApp from './main_section/SearchApp.vue';
         margin: 0 auto;
         background-color: $white-text;
     }
+
 
 
 </style>

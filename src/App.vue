@@ -2,7 +2,7 @@
 
   <HeaderComponent title= "Breaking Bad Api"/>
 
-  <MainComponent />
+  <MainComponent :characters ="characterList"/>
 </template>
 
 <script>

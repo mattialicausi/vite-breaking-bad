@@ -1,21 +1,19 @@
 <template>
-    <section>
-        <div class="row mt-2">
-            <div class="col-3 m-2 g-1 myCard text-center">
-                <img src="#" alt="image">
-                <h3>Nome</h3>
-                <p>Description</p>
-                
+            <div class="col-12 col-md-3 col-lg-2 m-1 g-1 rounded-2 myCard text-center">
+                <div class="container-img d-flex justify-content-center">
+                    <img class="img-fluid" :src="character.img" :alt="character.name">
+                </div>
+                <h3>{{character.name}}</h3>
+                <p>{{character.status}}</p>
             </div>
-          
-         
-        </div>
-    </section>
 </template>
 
 <script>
     export default {
         name: 'CardSection',
+        props: {
+            character : Object
+        }
     }
 </script>
 
@@ -24,11 +22,14 @@
 
     .myCard {
         background-color: $bg-color;
+        margin: 0 auto;
 
-        img {
-            height: 200px;
+        .container-img{
             width: auto;
+            height: 70%;
+            margin: 10px;
         }
+       
 
         h3{
             color: $white-text;
