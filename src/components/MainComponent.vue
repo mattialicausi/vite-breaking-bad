@@ -6,11 +6,11 @@
 
         <div class="row d-flex justify-content-center">
 
-            <div class="loading-page mt-2 d-flex justify-content-center" v-if="loading">
+            <div class="loading-page mt-2 d-flex justify-content-center" v-if="store.loading">
                 <div class="lds-circle p-2"><div></div></div>
             </div>
 
-            <CardSection :character ="item" v-for="(item, index) in characters" :key="item.char_id" v-if="!loading"/>
+            <CardSection :character ="item" v-for="(item, index) in store.characterList" :key="item.char_id" v-if="!store.loading"/>
 
         </div>
         
@@ -20,6 +20,7 @@
 <script>
 import CardSection from './main_section/CardSection.vue';
 import ShowCharacter from './main_section/ShowCharacter.vue';
+import {store} from '../store';
 
     export default {
     name: "MainComponent",
@@ -27,10 +28,16 @@ import ShowCharacter from './main_section/ShowCharacter.vue';
       ShowCharacter, 
         CardSection 
     },
-    props: [
-        "characters",
-        "loading"
-    ],
+    // props: [
+    //     "characters",
+    //     "loading"
+    // ],
+
+    data() {
+      return {
+        store,
+      }
+    }
    
 }
 </script>

@@ -2,13 +2,14 @@
 
   <HeaderComponent title= "Breaking Bad Api"/>
 
-  <MainComponent :characters ="characterList"/>
+  <MainComponent :characters ="store.characterList"/>
 </template>
 
 <script>
 import axios from 'axios';
 import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/MainComponent.vue';
+import {store} from './store';
 
   export default {
     components: { 
@@ -18,30 +19,26 @@ import MainComponent from './components/MainComponent.vue';
 
     data (){
       return {
-        apiUrl : 'https://www.breakingbadapi.com/api/characters',
-        characterList: [],
-        loading : false
+        store,
       }
     },
 
     methods: {
       getCharacters(){
-        this.loading = true;
-        console.log(this.loading)
+        this.store.loading = true;
+        console.log(this.store.loading)
 
-        axios.get(this.apiUrl).then(
+        axios.get(this.store.apiUrl).then(
           (res)=> {
-            this.characterList = [...res.data];
-            this.loading = false;
-                       
-            console.log(this.loading)
+            this.store.characterList = [...res.data];
+            this.store.loading = false;        
+            console.log(this.store.loading)
             
-        })
-        // .catch((error)=> {
-        //   //this.loading = false;
-        //   console.log(error);
+        }).catch((error)=> {
+          this.store.loading = false;
+          console.log(error);
 
-        // })
+        })
         
       }
     },

@@ -1,12 +1,19 @@
 <template>
-    <section class="mt-3 p-3 text-center">
-      MOSTRA NUMERO RISULTATI
+    <section class="mt-3 p-3 text-center" v-if="!store.loading">
+      <h4>Founded {{store.characterList.length}} characters</h4>
     </section>
 </template>
 
 <script>
+import {store} from '../../store';
     export default {
         name: 'ShowCharacter',
+
+        data(){
+            return {
+                store
+            }
+        }
         
     }
 </script>
