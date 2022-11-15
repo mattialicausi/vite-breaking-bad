@@ -1,9 +1,11 @@
 <template>
     <div class="container rounded-2">
-        <select class="p-1 rounded-2" name="" id="">
+
+        <select class="p-1 rounded-2" name="search-category" id="search-category" v-model="store.search.category">
             <option selected value="">Choose...</option>
-            <option value="" v-for="(category, index) in categoryOptions" :key="index">{{category}}</option>
+            <option :value="category" v-for="(category, index) in categoryOptions" :key="index" @click.prevent="searchCharacters" >{{category}}</option>
         </select>
+   
     </div>
 </template>
 
@@ -15,12 +17,22 @@ import {store} from '../../store';
 
         data() {
             return {
+                store,
                 categoryOptions: [
                     'Breaking Bad',
                     'Better Call Saul'
                 ],
             }
+        },
+
+        methods: {
+            searchCharacters() {
+                this.$emit('filterchar');
+                console.log('click')
+            },
         }
+
+
     }
 </script>
 

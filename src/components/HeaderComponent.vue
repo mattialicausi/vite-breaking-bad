@@ -1,23 +1,19 @@
 <template>
     <header>
+
         <h1>{{title}}</h1>
 
-        <section>
-            <SelectComponent/>
-        </section>
     </header>
 </template>
 
 <script>
-import SelectComponent from './header-section/SelectComponent.vue';
-
 
     export default {
     name: "HeaderComponent",
     props: {
         title: String
     },
-    components: { SelectComponent }
+
 }
 </script>
 
