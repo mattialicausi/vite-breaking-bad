@@ -1,13 +1,13 @@
 <template>
     <main class="container">
 
-        <SearchApp/>
+        <ShowCharacter/>
 
 
         <div class="row d-flex justify-content-center">
 
             <div class="loading-page mt-2 d-flex justify-content-center" v-if="loading">
-                <div class="lds-circle"><div></div></div>
+                <div class="lds-circle p-2"><div></div></div>
             </div>
 
             <CardSection :character ="item" v-for="(item, index) in characters" :key="item.char_id" v-if="!loading"/>
@@ -19,18 +19,19 @@
 
 <script>
 import CardSection from './main_section/CardSection.vue';
-import SearchApp from './main_section/SearchApp.vue';
+import ShowCharacter from './main_section/ShowCharacter.vue';
 
     export default {
     name: "MainComponent",
     components: { 
-        SearchApp, 
+      ShowCharacter, 
         CardSection 
     },
     props: [
         "characters",
         "loading"
-    ]
+    ],
+   
 }
 </script>
 

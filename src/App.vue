@@ -27,17 +27,21 @@ import MainComponent from './components/MainComponent.vue';
     methods: {
       getCharacters(){
         this.loading = true;
+        console.log(this.loading)
+
         axios.get(this.apiUrl).then(
           (res)=> {
             this.characterList = [...res.data];
             this.loading = false;
-            console.log('caricamento')
+                       
+            console.log(this.loading)
             
-        }).catch((error)=> {
-          this.loading = false;
-          console.log(error);
-
         })
+        // .catch((error)=> {
+        //   //this.loading = false;
+        //   console.log(error);
+
+        // })
         
       }
     },
