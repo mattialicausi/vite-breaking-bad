@@ -10,10 +10,18 @@
 </template>
 
 <script>
+import {store} from '../../store';
+
     export default {
         name: 'CardSection',
         props: {
             character : Object
+        },
+
+        data() {
+            return {
+                store,
+            }
         }
     }
 </script>

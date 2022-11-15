@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import {store} from './store';
+
 import axios from 'axios';
 import HeaderComponent from './components/HeaderComponent.vue';
 import SelectComponent from './components/header-section/SelectComponent.vue'
 import MainComponent from './components/MainComponent.vue';
-
+import {store} from './store';
 
   export default {
     components: { 
@@ -32,13 +32,15 @@ import MainComponent from './components/MainComponent.vue';
     data (){
       return {
         store,
-        endPoint : 'category'
+        endPoint : ''
 
       }
     },
 
     methods: {
       getCharacters(){
+        store.errormessage = '';
+
         let options = null;
 
         if(store.search.category){
@@ -52,14 +54,16 @@ import MainComponent from './components/MainComponent.vue';
       this.store.loading = true;
       const apiurl = store.apiUrl + this.endPoint;
 
-        axios.get(this.store.apiUrl).then(
+        axios.get(apiurl, options).then(
           (res)=> {
-            this.store.characterList = [...res.data];
-            this.store.loading = false;        
+            store.characterList = res.data;
+            store.loading = false;        
           
             
         }).catch((error)=> {
-          this.store.loading = false;
+         store.characterList.length = 0;
+
+          store.loading = false;
           store.errormessage = error.message
 
         })
